@@ -17,5 +17,7 @@ public func application() throws -> Application {
     }
     
     try application.databases.use(.postgres(url: databaseURL), as: .psql)
+    try application.register(collection: DatabaseRoutes())
+    
     return application
 }
