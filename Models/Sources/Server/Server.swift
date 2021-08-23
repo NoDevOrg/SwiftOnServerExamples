@@ -19,5 +19,9 @@ public func application() throws -> Application {
     try application.databases.use(.postgres(url: databaseURL), as: .psql)
     try application.register(collection: DatabaseRoutes())
     
+    application.migrations.add([
+        User.Migrations.Create(),
+    ])
+    
     return application
 }
